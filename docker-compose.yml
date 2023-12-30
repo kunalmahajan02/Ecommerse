@@ -1,0 +1,17 @@
+version: '3.8'
+
+
+services:
+  mysql_db:
+    image: mysql
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+      - "./setup.sql:/docker-entrypoint-initdb.d/setup.sql"
+    ports:
+      - "9906:3306"
+    environment:
+      - MYSL_ROOT_PASSWORD=$MYSL_ROOT_PASSWORD
+
+volumes: 
+  db:
